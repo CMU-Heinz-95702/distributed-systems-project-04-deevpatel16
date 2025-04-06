@@ -1,0 +1,22 @@
+{
+  "name": "Project4Task2Android",
+  "image": "mcr.microsoft.com/devcontainers/java:11",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": true,
+      "installGradle": false
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.vscode-xml"
+      ]
+    }
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "mvn clean package -f Project4Task2/pom.xml",
+  "remoteUser": "vscode"
+}
