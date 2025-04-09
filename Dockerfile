@@ -1,10 +1,15 @@
-FROM tomcat:9.0-jdk11
+# Use Tomcat 11, which supports Servlets 5
+FROM tomcat:11.0.0-M24-jdk21-temurin-noble
 
-# Copy the WAR file to Tomcat's webapps directory
-COPY ./target/BookService-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/BookService.war
+# This limits the amount of memory used
+ENV JAVA_OPTS="-Xmx300m"
 
-# Expose port 8080
+# Expose port 8080 when running on localhost
 EXPOSE 8080
 
-# Start Tomcat
-CMD ["catalina.sh", "run"]
+# Copy in our ROOT.war to the right place in the container
+COPY ROOT.war /usr/local/tomcat/webapps/
+
+# LOCALHOST:  Run catalina in the container
+# Should map localhost:8080 to this app
+CMD ["catalina.sh", "run"]
