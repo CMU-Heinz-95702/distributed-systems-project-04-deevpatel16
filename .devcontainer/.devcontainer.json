@@ -4,7 +4,7 @@
     "dockerfile": "Dockerfile"
   },
   "forwardPorts": [8080],
-  "postCreateCommand": "mvn clean package && catalina.sh run",
+  "postCreateCommand": "echo 'Building project...' && mvn clean package",
   "extensions": [
     "vscjava.vscode-java-pack",
     "redhat.vscode-xml",
@@ -20,6 +20,12 @@
       "openFiles": [
         "src/main/webapp/index.jsp"
       ]
+    }
+  },
+  "portsAttributes": {
+    "8080": {
+      "label": "Tomcat Web Server",
+      "onAutoForward": "openBrowser"
     }
   }
 }
