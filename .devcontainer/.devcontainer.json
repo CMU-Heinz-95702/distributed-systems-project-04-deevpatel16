@@ -1,10 +1,10 @@
 {
-  "name": "Java Web Application",
+  "name": "Java Web Application with Tomcat 10",
   "build": {
     "dockerfile": "Dockerfile"
   },
   "forwardPorts": [8080],
-  "postCreateCommand": "echo 'Building project...' && mvn clean package",
+  "postCreateCommand": "echo 'Building WAR file...' && mvn clean package",
   "extensions": [
     "vscjava.vscode-java-pack",
     "redhat.vscode-xml",
