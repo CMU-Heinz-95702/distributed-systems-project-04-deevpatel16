@@ -1,17 +1,10 @@
-# Start with the official Tomcat 10 image
-FROM tomcat:10.1.0-jdk17-openjdk-slim-bullseye
+# Use a Linux image with Tomcat 10
+FROM tomcat:10.1.0-jdk16-openjdk-slim-bullseye
 
-# Install OpenJDK 21
-RUN apt-get update && apt-get install -y \
-    openjdk-21-jdk \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set JAVA_HOME and PATH to point to the newly installed OpenJDK 21
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-ENV PATH=$JAVA_HOME/bin:$PATH
-
-# Set Tomcat home directory
+# Set environment variables for Java and Tomcat
+ENV JAVA_HOME=/usr/local/openjdk-16
 ENV CATALINA_HOME=/usr/local/tomcat
+ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Copy the ROOT.war file into the webapps directory of Tomcat
 COPY ROOT.war /usr/local/tomcat/webapps/
