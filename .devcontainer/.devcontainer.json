@@ -1,31 +1,7 @@
 {
-  "name": "Java Web Application with Tomcat 10",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "forwardPorts": [8080],
-  "postCreateCommand": "echo 'Building WAR file...' && mvn clean package",
-  "extensions": [
-    "vscjava.vscode-java-pack",
-    "redhat.vscode-xml",
-    "vmware.vscode-boot-dev-pack"
-  ],
-  "settings": {
-    "java.server.launchMode": "Standard",
-    "java.configuration.updateBuildConfiguration": "automatic"
-  },
-  "remoteUser": "vscode",
-  "customizations": {
-    "codespaces": {
-      "openFiles": [
-        "src/main/webapp/index.jsp"
-      ]
-    }
-  },
-  "portsAttributes": {
-    "8080": {
-      "label": "Tomcat Web Server",
-      "onAutoForward": "openBrowser"
-    }
-  }
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "forwardPorts": [8080],
+    "postCreateCommand": "catalina.sh run"
 }
