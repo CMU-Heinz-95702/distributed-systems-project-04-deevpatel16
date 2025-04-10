@@ -1,7 +1,25 @@
 {
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "forwardPorts": [8080],
-    "postCreateCommand": "catalina.sh run"
+  "name": "Java Web Application",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "mvn clean package && catalina.sh run",
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "redhat.vscode-xml",
+    "vmware.vscode-boot-dev-pack"
+  ],
+  "settings": {
+    "java.server.launchMode": "Standard",
+    "java.configuration.updateBuildConfiguration": "automatic"
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "src/main/webapp/dashboard.jsp"
+      ]
+    }
+  }
 }
